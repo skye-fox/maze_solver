@@ -1,5 +1,7 @@
 """This is the module for the graphics"""
 
+# pylint: disable=too-few-public-methods
+
 from tkinter import BOTH, Canvas, Tk
 
 
@@ -34,3 +36,11 @@ class Window:
         """Method for closing the program when the user closes the window"""
 
         self.__win_run = False
+
+
+class Point:
+    """Class to create a point with x, y coordinates. Used by the Line class"""
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
