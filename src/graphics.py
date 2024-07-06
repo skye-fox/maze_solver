@@ -24,6 +24,11 @@ class Window:
         self.__root.update_idletasks()
         self.__root.update()
 
+    def draw_line(self, line, fill_color="8b5cf6"):
+        """Method for drawing a line to the canvas in the window"""
+
+        line.draw(self.__canvas, fill_color)
+
     def wait_for_close(self):
         """Method that continuously redraws the contents of the window until it is closed"""
 
