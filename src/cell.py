@@ -36,3 +36,19 @@ class Cell:
             self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)), "white")
         if self.has_bottom_wall:
             self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), "white")
+
+    def draw_move(self, to_cell, undo=False):
+        """Method to draw a line from the center of the cell it's called on to
+        the center of the cell it is passed"""
+
+        x1_c = (self._x1 + self._x2) // 2
+        y1_c = (self._y1 + self._y2) // 2
+
+        x2_c = (to_cell._x1 + to_cell._x2) // 2
+        y2_c = (to_cell._y1 + to_cell._y2) // 2
+
+        fill_color = "red"
+        if undo:
+            fill_color = "gray"
+
+        self._win.draw_line(Line(Point(x1_c, y1_c), Point(x2_c, y2_c)), fill_color)
