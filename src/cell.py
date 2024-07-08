@@ -14,6 +14,7 @@ class Cell:
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
         self._x1 = None
         self._x2 = None
         self._y1 = None
@@ -31,15 +32,27 @@ class Cell:
         if self.has_left_wall:
             if self._win is not None:
                 self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)), "white")
+        else:
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)), "black")
         if self.has_right_wall:
             if self._win is not None:
                 self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), "white")
+        else:
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), "black")
         if self.has_top_wall:
             if self._win is not None:
                 self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)), "white")
+        else:
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)), "black")
         if self.has_bottom_wall:
             if self._win is not None:
                 self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), "white")
+        else:
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), "black")
 
     def draw_move(self, to_cell, undo=False):
         """Method to draw a line from the center of the cell it's called on to
