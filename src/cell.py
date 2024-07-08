@@ -64,9 +64,9 @@ class Cell:
         x2_c = (to_cell._x1 + to_cell._x2) // 2
         y2_c = (to_cell._y1 + to_cell._y2) // 2
 
-        fill_color = "red"
+        fill_color = "#8b5cf6"
         if undo:
-            fill_color = "gray"
+            fill_color = "red"
 
         if self._win is not None:
             self._win.draw_line(Line(Point(x1_c, y1_c), Point(x2_c, y2_c)), fill_color)
