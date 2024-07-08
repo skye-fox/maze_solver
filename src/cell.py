@@ -9,7 +9,7 @@ from graphics import Line, Point
 class Cell:
     """A class to define cells within the Window object"""
 
-    def __init__(self, win):
+    def __init__(self, win=None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -29,13 +29,17 @@ class Cell:
         self._y1 = y1
         self._y2 = y2
         if self.has_left_wall:
-            self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)), "white")
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)), "white")
         if self.has_right_wall:
-            self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), "white")
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), "white")
         if self.has_top_wall:
-            self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)), "white")
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)), "white")
         if self.has_bottom_wall:
-            self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), "white")
+            if self._win is not None:
+                self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), "white")
 
     def draw_move(self, to_cell, undo=False):
         """Method to draw a line from the center of the cell it's called on to
@@ -51,4 +55,5 @@ class Cell:
         if undo:
             fill_color = "gray"
 
-        self._win.draw_line(Line(Point(x1_c, y1_c), Point(x2_c, y2_c)), fill_color)
+        if self._win is not None:
+            self._win.draw_line(Line(Point(x1_c, y1_c), Point(x2_c, y2_c)), fill_color)
